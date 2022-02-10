@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+
+        <!--Vue-->
+        <script src="https://unpkg.com/vue@3"></script>
+
+        <!--Bootstrap-->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"
+        ></script>
+
+        <!--Font Awesome icons-->
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+            crossorigin="anonymous"
+        />
+
+        <title>Rainbow6 - Hall of Fame</title>
+    </head>
+
+    <body>
+        <!--本节实现内容变化-->
+        <div id="app" class="bg-dark">
+            <!-- Navigation bar -->
+            <nav class="navbar navbar-light bg-light">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-flex align-items-center" href="#">
+                        <img
+                            src="images/r6-icon.jpg"
+                            alt="R6-icon"
+                            width="40"
+                            height="40"
+                            class="d-inline-block align-text-top"
+                        />
+                        <span class="ms-2"
+                            ><b>Rainbow 6 </b> &nbsp; Hall of Fame</span
+                        >
+                    </a>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a
+                                class="nav-link active fs-5 me-3"
+                                aria-current="page"
+                                href="https://x3vvv.github.io/profolio"
+                                >About</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Card group 1 -->
+            <div
+                class="d-flex justify-content-evenly flex-fill mt-5 w-75 mx-auto"
+            >
+                <!--静态传参-->
+                <article-list
+                    box-title="Lion"
+                    img-src="images/lion.jpg"
+                    img-alt="Lion"
+                    box-content="Lion led the charge to contain the original outbreak in New Mexico. 
+                        His background as a CBRN specialist makes him essential to the efforts 
+                        to combat this new crisis. R6 Command knew immediately that his skill 
+                        with the EE-ONE-D drone would be vital to combating the Archæans and 
+                        supporting his teammates."
+                ></article-list>
+
+                <article-list
+                    box-title="Ela"
+                    img-src="images/ela.jpg"
+                    img-alt="Ela"
+                    box-content="Elżbieta Bosak was born in Wrocław, Poland. She is the youngest 
+                        daughter of Jan Bosak, former commander of the Polish Special Forces unit 
+                        GROM. She is also the younger sister of Zofia Bosak. Growing up, her father 
+                        favored Zofia, causing a rift between them. Despite this, Zofia was highly 
+                        protective of her sister..."
+                ></article-list>
+
+                <!--动态传参-->
+                <article-list
+                    :box-title="title"
+                    :img-src="imgsrc"
+                    :img-alt="imgalt"
+                    :box-content="content"
+                ></article-list>
+            </div>
+
+            <!-- Card group 2 -->
+            <div
+                class="d-flex justify-content-evenly flex-fill mt-5 w-75 mx-auto"
+            >
+                <article-list
+                    v-for="item in items"
+                    :box-title="item.title"
+                    :img-src="item.imgsrc"
+                    :img-alt="item.imgalt"
+                    :box-content="item.content"
+                ></article-list>
+            </div>
+
+            <!-- Footer -->
+            <footer class="bg-dark text-center text-white pt-5 mt-5">
+                <!-- Grid container -->
+                <div class="container p-4">
+                    <!-- Section: Social media -->
+                    <section class="mb-4">
+                        <!-- Instagram -->
+                        <a
+                            class="btn btn-outline-light btn-floating m-2"
+                            href="https://www.instagram.com/xav_pun/"
+                            role="button"
+                            ><i class="fab fa-instagram"></i
+                        ></a>
+
+                        <!-- Linkedin -->
+                        <a
+                            class="btn btn-outline-light btn-floating m-2"
+                            href="https://www.linkedin.com/in/zewen-pan-8363a3220/"
+                            role="button"
+                            ><i class="fab fa-linkedin-in"></i
+                        ></a>
+
+                        <!-- Github -->
+                        <a
+                            class="btn btn-outline-light btn-floating m-2"
+                            href="https://github.com/X3vvv"
+                            role="button"
+                            ><i class="fab fa-github"></i
+                        ></a>
+                    </section>
+                    <!-- Section: Social media -->
+
+                    <!-- Section: Text -->
+                    <section>
+                        <p>
+                            Knowing is not enough; we must apply. Willing is not
+                            enough; we must do. &nbsp; - Johann Wolfgang von
+                            Goethe
+                        </p>
+                    </section>
+                    <!-- Section: Text -->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div
+                    class="text-center p-3"
+                    style="background-color: rgba(0, 0, 0, 0.2)"
+                >
+                    © 2022 Copyright:
+                    <a
+                        class="text-white"
+                        href="https://X3vvv.github.io/profolio"
+                        >X3vvv.github.io</a
+                    >
+                </div>
+                <!-- Copyright -->
+            </footer>
+            <!-- Footer -->
+        </div>
+
+        <!-- ArticleList template -->
+        <template id="box">
+            <div class="card w-100 ms-3 me-3">
+                <img
+                    :src="imgSrc"
+                    class="card-img-top"
+                    :alt="imgAlt"
+                    style="object-fit: cover; height: 300px; width: auto"
+                />
+                <div class="card-body">
+                    <h5 class="card-title">{{boxTitle}}</h5>
+                    <p class="card-text">{{boxContent}}</p>
+                </div>
+            </div>
+        </template>
+
+        <script>
+            const vm = Vue.createApp({
+                // 组件和实例可以看作同一个东西，其内的变量有各自的作用域，类似python的嵌套函数
+                // 另一种格式: new Vue({ el:'#app', ...});
+                data() {
+                    return {
+                        // return的是一个对象, 使用{}
+                        title: "Ace",
+                        imgsrc: "images/ace.jpg",
+                        imgalt: "Ace",
+                        content:
+                            "Born in a quiet but historic village, Haugland benefited early \
+                            on from high praise and a lack of competition. Consistently the \
+                            best at whatever he set his mind to, he easily imagined himself \
+                            as an admired pediatric surgeon and enrolled in medical school. \
+                            However, he soon discovered that memorizing theory wasn't to his \
+                            liking and instead opted for paramedic training in order to get \
+                            into the action more quickly.",
+                        items: [],
+                    };
+                },
+                components: {
+                    ArticleList: {
+                        // 需要传参方式实现动态改变内容
+                        // data() {
+                        //     return {
+                        //         // an object
+                        //         boxTitle: "Rainbow 6 - Lion",
+                        //         imgSrc: "images/lion.jpg",
+                        //         imgAlt: "Lion",
+                        //         boxContent:
+                        //             "Lion led the charge to contain the original outbreak in New Mexico. \
+                        //             His background as a CBRN specialist makes him essential to the efforts \
+                        //             to combat this new crisis. R6 Command knew immediately that his skill \
+                        //             with the EE-ONE-D drone would be vital to combating the Archæans and \
+                        //             supporting his teammates.",
+                        //     };
+                        // },
+                        props: [
+                            // 原理同原生js的renderDom()
+                            // 设置形式参数: 结果为数组(较简单) 或 对象(稍复杂)
+                            // 传递实参方式: 将props当作自定义属性添加在组件(component, 即当前的ArticleList组件)中, 见div#app
+                            "boxTitle",
+                            "imgSrc",
+                            "imgAlt",
+                            "boxContent",
+                        ], // 也会被挂载到Vue实例身上
+                        template: "#box",
+                    },
+                },
+            }).mount("#app");
+
+            function pushItem(name, content) {
+                vm.items.push({
+                    title: name,
+                    imgsrc: "images/" + name.toLowerCase() + ".jpg",
+                    imgalt: name,
+                    content: content,
+                });
+            }
+            pushItem(
+                "Nomad", //name
+                "Brought up in a wealthy Moroccan family, Sanaa El Maktoub travelled \
+                considerably at a young age, visiting Europe and North Africa, and dreaming \
+                about braving remote regions. She enlisted in the military at 19 and later \
+                joined the Groupe d'Intérvention de La Gendarmerie Royale (GIGR) after \
+                graduating from the legendary Fortress under extensive training from Jalal \
+                \"Kaid\" El Fassi. She served 4 tours with the Mountain Infantry Battalion \
+                and took part in Flintlock exercises and joint missions with Trans-Saharan \
+                Counterterrorism Initiative partners. She became her unit's expert on \
+                environmental operations." //content
+            );
+            pushItem(
+                "Alibi", //name
+                'Aria "Alibi" de Luca was born in Tripoli, Libya and immigrated with her \
+                family when she was three years old. Her father managed a small ordinance \
+                manufacturer, using his extensive North African contracts to open up exports \
+                to that region. De Luca carried her understanding and usage of Italian \
+                firearms through the family business and training on the shooting range. At \
+                10, Aria entered the European Championships organized by the European \
+                hooting Confederation and won gold in both 10-metre running target and \
+                10-metre air pistol divisions. Following the event, a Carabinieri recruiter \
+                convinced her to join the police force.' //content
+            );
+            pushItem(
+                "Caveira", //name
+                "Taina was born seventh in a family of ten boys on October 15th in the small \
+                town Rinópolis within São Paulo. Her father had died before she was born and \
+                her mother only received a small pension for his death. She was six years old \
+                when the Pereira family was forced to move to a poor neighborhood in Rio de \
+                Janeiro." //content
+            );
+        </script>
+    </body>
+</html>

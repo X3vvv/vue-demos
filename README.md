@@ -2,7 +2,7 @@
 My vue demos
 
 # projects
-R6 Hall of Fame
+## R6 Hall of Fame
 Reference: 
 - [Bootstrap](https://getbootstrap.com/docs/5.1/getting-started/introduction/)
 - [Vue](https://vuejs.org/guide/introduction.html)

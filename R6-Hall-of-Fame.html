@@ -31,7 +31,6 @@
     </head>
 
     <body>
-        <!--本节实现内容变化-->
         <div id="app" class="bg-dark">
             <!-- Navigation bar -->
             <nav class="navbar navbar-light bg-light">
@@ -65,7 +64,7 @@
             <div
                 class="d-flex justify-content-evenly flex-fill mt-5 w-75 mx-auto"
             >
-                <!--静态传参-->
+                <!-- static parameters -->
                 <article-list
                     box-title="Lion"
                     img-src="images/lion.jpg"
@@ -88,7 +87,7 @@
                         protective of her sister..."
                 ></article-list>
 
-                <!--动态传参-->
+                <!-- dynamic parameters -->
                 <article-list
                     :box-title="title"
                     :img-src="imgsrc"
@@ -189,11 +188,11 @@
 
         <script>
             const vm = Vue.createApp({
-                // 组件和实例可以看作同一个东西，其内的变量有各自的作用域，类似python的嵌套函数
-                // 另一种格式: new Vue({ el:'#app', ...});
+                // instance and components are alike, also similar to python nested functions, have their own variable domain
+                // another format: new Vue({ el:'#app', ...});
                 data() {
                     return {
-                        // return的是一个对象, 使用{}
+                        // return gives an object, should use "{}"
                         title: "Ace",
                         imgsrc: "images/ace.jpg",
                         imgalt: "Ace",
@@ -210,30 +209,17 @@
                 },
                 components: {
                     ArticleList: {
-                        // 需要传参方式实现动态改变内容
-                        // data() {
-                        //     return {
-                        //         // an object
-                        //         boxTitle: "Rainbow 6 - Lion",
-                        //         imgSrc: "images/lion.jpg",
-                        //         imgAlt: "Lion",
-                        //         boxContent:
-                        //             "Lion led the charge to contain the original outbreak in New Mexico. \
-                        //             His background as a CBRN specialist makes him essential to the efforts \
-                        //             to combat this new crisis. R6 Command knew immediately that his skill \
-                        //             with the EE-ONE-D drone would be vital to combating the Archæans and \
-                        //             supporting his teammates.",
-                        //     };
-                        // },
                         props: [
-                            // 原理同原生js的renderDom()
-                            // 设置形式参数: 结果为数组(较简单) 或 对象(稍复杂)
-                            // 传递实参方式: 将props当作自定义属性添加在组件(component, 即当前的ArticleList组件)中, 见div#app
+                            // similar to renderDom() in original js
+                            // formal parameters: can be either list (simple) or objects (complicated)
+                            // similar to:
+                            //     def component-name(props:List): pass
+                            // the component here is 'ActualList'
                             "boxTitle",
                             "imgSrc",
                             "imgAlt",
                             "boxContent",
-                        ], // 也会被挂载到Vue实例身上
+                        ], // will be mounted to the Vue instance
                         template: "#box",
                     },
                 },
